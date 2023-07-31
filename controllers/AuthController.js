@@ -1,5 +1,5 @@
 function AuthController(app) {
-    app.controller('AuthController', function ($scope, $http, $rootScope) {
+    app.controller('AuthController', function ($scope, $http, $rootScope, AuthService) {
         $scope.formLogin = {
             email: '',
             password: '',
@@ -9,23 +9,18 @@ function AuthController(app) {
             password: '',
             confirmPassword: '',
         };
-        $scope.login = $scope.login = () => {
-            $http
-                .post('http://localhost:8080/api/public/accounts', {
-                    ...$scope.form,
-                })
-                .then((res) => {
-                    const data = res.data;
-                    if (data.success) {
-                        localStorage.setItem('access_token', data.message);
-                        localStorage.setItem('user', JSON.stringify(data.data));
-                        $rootScope.user = data.data;
-                        window.open('#!/', '_self');
-                    }
-                })
-                .catch((err) => {
-                    Promise.reject(err);
-                });
+
+        $scope.login = async () => {
+            const { accessToken, accountDto } = await AuthService.login($scope.formLogin);
+            localStorage.setItem('access_token', accessToken);
+            localStorage.setItem('user', JSON.stringify(accountDto));
+            $rootScope.user = accountDto;
+            window.open('#!/', '_self');
+        };
+
+        $scope.register = async () => {
+            await AuthService.register($scope.formRegister);
+            window.open('#!/login', '_self');
         };
     });
 }

@@ -1,3 +1,4 @@
 import ProductApi from './ProductApi.js';
+import AuthApi from './AuthApi.js';
 
-export default { ProductApi };
+export default { ProductApi, AuthApi };
