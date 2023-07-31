@@ -1,10 +1,15 @@
 function AuthController(app) {
-    app.controller('loginController', function ($scope, $http, $rootScope) {
-        $scope.form = {
+    app.controller('AuthController', function ($scope, $http, $rootScope) {
+        $scope.formLogin = {
             email: '',
             password: '',
         };
-        $scope.login = () => {
+        $scope.formRegister = {
+            email: '',
+            password: '',
+            confirmPassword: '',
+        };
+        $scope.login = $scope.login = () => {
             $http
                 .post('http://localhost:8080/api/public/accounts', {
                     ...$scope.form,
