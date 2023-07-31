@@ -1,0 +1,41 @@
+<div class="flex flex-col items-center mt-4">
+    <div ng-class="darkModeColor">Product Form</div>
+    <form class="w-1/2" name="productForm" ng-submit="submitProduct()">
+        <label for="productImage" class="flex justify-center">
+            <img src="{{image}}" id="previewImage" class="w-48 h-48" alt="" />
+        </label>
+        <div class="mb-6">
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name:</label>
+            <input
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                type="text" ng-model="product.name" required>
+        </div>
+        <div class="mb-6">
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Stock:</label>
+            <input
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" type="number"
+                ng-model="product.stock" required>
+
+        </div>
+        <div class="mb-6">
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price:</label>
+            <input
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                type="number" ng-model="product.price" min="1" required>
+        </div>
+        <div class="mb-6">
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category:</label>
+            <input
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                type="number" ng-model="product.category.id" required>
+        </div>
+        <div ng-class="darkModeColor " class="mb-6 hidden">
+            <input type="file" custom-on-change="handleChangeImage" accept="image/*" ng-model="imageFile"
+                name="imageInput" id="productImage" required>
+        </div>
+        <button
+            class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            type="submit">Submit</button>
+    </form>
+</div>
