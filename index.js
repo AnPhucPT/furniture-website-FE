@@ -17,6 +17,8 @@ for (const key in controller) {
 }
 
 app.run(function ($rootScope, $http) {
+    $rootScope.darkModeColor = "text-gray-200 bg-gray-900"
+
     //before init
     $http.get('').then((res) => {
         $rootScope.categories = res.data;
@@ -56,6 +58,10 @@ app.config(function ($routeProvider) {
             templateUrl: '/pages/order.html',
             controller: 'OrderController',
         })
+        .when('/product-form/:id', {
+            templateUrl: '/pages/product-form.html',
+            controller: 'ProductFormController',
+        })
         .otherwise({
             templateUrl: 'views/notFound.html',
         });
@@ -67,4 +73,17 @@ const defaultOptions = {
     backdropClasses: 'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40',
     closable: true,
 };
+
+app.directive('customOnChange', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            var onChangeHandler = scope.$eval(attrs.customOnChange);
+            element.on('change', onChangeHandler);
+            element.on('$destroy', function () {
+                element.off();
+            });
+        },
+    };
+});
 export default app;
