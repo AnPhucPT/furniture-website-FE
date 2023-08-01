@@ -1,5 +1,5 @@
 function cartController(app) {
-    app.controller('cartController', function ($scope, $http, $rootScope, $timeout, CartService) {
+    app.controller('CartController', function ($scope, $http, $rootScope, $timeout, CartService) {
         $scope.removeProduct = null;
         $scope.products = CartService.getCartFromLS();
         $rootScope.removeProductItem = () => {
@@ -27,15 +27,14 @@ function cartController(app) {
 
         $scope.submit = () => {
             $rootScope.loading = true;
-            const shipFee = $scope.getTax();
-            const orderItemDTOS = $scope.products.map((product) => ({
+            const orderItemDtos = $scope.products.map((product) => ({
                 quantity: product.quantity,
                 product,
             }));
             const address = 'HCM';
-            const formData = { shipFee, orderItemDTOS, address };
+            const formData = { orderItemDtos, address };
             $http
-                .post('http://localhost:8080/api/public/order', formData, {
+                .post('http://localhost:8080/api/order', formData, {
                     headers: {
                         Authorization: 'Bearer ' + localStorage.getItem('access_token') || '',
                     },

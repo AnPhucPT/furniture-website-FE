@@ -1,5 +1,5 @@
 function ShopService(app) {
-    app.factory('ShopService', function (productApi, $timeout, $rootScope) {
+    app.factory('ShopService', function (ProductApi, $timeout, $rootScope) {
         const defaultParams = {
             defaultSearchParams: { page: 0, pageSize: 8 },
             defaultTagParams: {
@@ -13,7 +13,7 @@ function ShopService(app) {
         const getProduct = async (searchParams) => {
             $rootScope.loading = true;
             try {
-                const res = await productApi.filter(searchParams);
+                const res = await ProductApi.filter(searchParams);
                 const { totalPage, totalItems, datas } = res.data.data;
                 const getTotalPage = () => {
                     return Array.from({ length: totalPage }, (_, index) => index + 1);
@@ -38,7 +38,7 @@ function ShopService(app) {
         const getMinMax = async () => {
             $rootScope.loading = true;
             try {
-                const res = await productApi.minMax();
+                const res = await ProductApi.minMax();
                 const { min, max } = res.data.data;
 
                 const tagParams = {

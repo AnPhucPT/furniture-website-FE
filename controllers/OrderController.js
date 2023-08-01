@@ -51,13 +51,14 @@ function OrderController(app) {
         };
 
         $http
-            .get('http://localhost:8080/api/order/account-' + $rootScope.user.id, {
+            .get('http://localhost:8080/api/order', {
                 headers: {
                     Authorization: 'Bearer ' + localStorage.getItem('access_token') || '',
                 },
             })
             .then((res) => {
-                $scope.orders = res.data;
+                $scope.orders = res.data.data;
+                console.log(res.data.data);
             })
             .catch((err) => {
                 Promise.reject(err);

@@ -17,8 +17,8 @@ for (const key in controller) {
 }
 
 app.run(function ($rootScope, $http) {
-    $rootScope.darkModeColor = "text-gray-200 bg-gray-900"
-
+    $rootScope.darkModeColor = "dark:text-gray-200 dark:bg-gray-900"
+    $rootScope.isAdmin = false
     //before init
     $http.get('').then((res) => {
         $rootScope.categories = res.data;
@@ -58,8 +58,8 @@ app.config(function ($routeProvider) {
             templateUrl: '/pages/order.html',
             controller: 'OrderController',
         })
-        .when('/product-form/:id', {
-            templateUrl: '/pages/product-form.html',
+        .when('/product-manage', {
+            templateUrl: '/pages/product-manage.html',
             controller: 'ProductFormController',
         })
         .otherwise({

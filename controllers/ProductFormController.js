@@ -24,6 +24,7 @@ function ProductFormController(app) {
             })
                 .then(function (response) {
                     console.log('Product created successfully:', response.data);
+                    alert(response.data.message)
                     $scope.product = {
                         name: '',
                         stock: 0,

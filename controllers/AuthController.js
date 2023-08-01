@@ -14,6 +14,9 @@ function AuthController(app) {
             const { accessToken, accountDto } = await AuthService.login($scope.formLogin);
             localStorage.setItem('access_token', accessToken);
             localStorage.setItem('user', JSON.stringify(accountDto));
+            $rootScope.isAdmin = accountDto.role === "ROLE_ADMIN"
+            console.log($rootScope.isAdmin);
+            $rootScope.$apply()
             $rootScope.user = accountDto;
             window.open('#!/', '_self');
         };

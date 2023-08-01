@@ -4,7 +4,8 @@
 
     <!--  BreakCrumb Section  -->
     <section class='bg-gray-50 dark:bg-gray-800'>
-        <div class='lg:gap-8 justify-between items-baseline py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 flex flex-wrap sm:py-16 lg:px-6'>
+        <div
+            class='lg:gap-8 justify-between items-baseline py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 flex flex-wrap sm:py-16 lg:px-6'>
             <div class='text-2xl font-bold dark:text-gray-300'>
                 Product
             </div>
@@ -24,14 +25,17 @@
                 <div class='py-2'>
                     <h3 class='font-semibold text-lg dark:text-gray-300 mb-3'>Categories</h3>
                     <ul>
-                        <li class='py-2 cursor-pointer flex gap-2 items-center hover:pl-4 duration-300 text-gray-900 dark:text-gray-400'>
+                        <li
+                            class='py-2 cursor-pointer flex gap-2 items-center hover:pl-4 duration-300 text-gray-900 dark:text-gray-400'>
                             <ion-icon class="dark:text-gray-200" name="chevron-forward-outline"></ion-icon>
                             <a ng-click='resetProduct()' class='text-sm font-medium w-full'>All</a>
                         </li>
                         <div ng-repeat='category in categories'>
-                            <li class='py-2 cursor-pointer flex gap-2 items-center hover:pl-4 duration-300 text-gray-900 dark:text-gray-400'>
+                            <li
+                                class='py-2 cursor-pointer flex gap-2 items-center hover:pl-4 duration-300 text-gray-900 dark:text-gray-400'>
                                 <ion-icon class="dark:text-gray-200" name="chevron-forward-outline"></ion-icon>
-                                <div ng-click='getProductByCategory_Id(category.id, category.name)' class='text-sm font-medium w-full'>
+                                <div ng-click='getProductByCategory_Id(category.id, category.name)'
+                                    class='text-sm font-medium w-full'>
                                     {{category.name}}
                                 </div>
                             </li>
@@ -54,7 +58,8 @@
                                         $
                                     </div>
                                 </div>
-                                <input ng-model='min' required name='min' type='text' id='input-group-1' class='input-min pointer-events-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full pl-8 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500'>
+                                <input ng-model='min' required name='min' type='text' id='input-group-1'
+                                    class='input-min pointer-events-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full pl-8 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500'>
                             </div>
                         </div>
                         <div class='mb-3'>
@@ -65,20 +70,27 @@
                                         $
                                     </div>
                                 </div>
-                                <input ng-model='max' required name='max' type='text' id='input-group-2' class='input-min pointer-events-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full pl-8 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500'>
+                                <input ng-model='max' required name='max' type='text' id='input-group-2'
+                                    class='input-min pointer-events-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full pl-8 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500'>
                             </div>
                         </div>
                     </div>
                     <div class='my-6'>
                         <div class='slider bg-slate-300 dark:bg-slate-500 h-[5px] rounded-lg relative'>
-                            <div ng-style="{ right: RightValue, left: LeftValue }" id="progress" class=' absolute h-full rounded-lg bg-sky-500'></div>
+                            <div ng-style="{ right: RightValue, left: LeftValue }" id="progress"
+                                class=' absolute h-full rounded-lg bg-sky-500'></div>
                         </div>
                         <div class='range-input h-1 relative'>
-                            <input ng-model='min' min='0' max='{{maxValue}}' step='1' id="small-range" type="range" value="50" class="absolute top-[-5px] pointer-events-none bg-transparent w-full h-1 mb-6  rounded-lg appearance-none cursor-pointer range-sm ">
-                            <input ng-model='max' min='0' max='{{maxValue}}' step='1' id="small-range" type="range" value="50" class="absolute top-[-5px] pointer-events-none bg-transparent w-full h-1 mb-6  rounded-lg appearance-none cursor-pointer range-sm ">
+                            <input ng-model='min' min='0' max='{{maxValue}}' step='1' id="small-range" type="range"
+                                value="50"
+                                class="absolute top-[-5px] pointer-events-none bg-transparent w-full h-1 mb-6  rounded-lg appearance-none cursor-pointer range-sm ">
+                            <input ng-model='max' min='0' max='{{maxValue}}' step='1' id="small-range" type="range"
+                                value="50"
+                                class="absolute top-[-5px] pointer-events-none bg-transparent w-full h-1 mb-6  rounded-lg appearance-none cursor-pointer range-sm ">
                         </div>
                     </div>
-                    <button ng-click='getProductByPriceRange()' class='py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-sky-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'>
+                    <button ng-click='getProductByPriceRange()'
+                        class='py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-sky-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'>
                         Filter
                     </button>
                 </form>
@@ -107,27 +119,32 @@
                     <h3 class='font-semibold text-lg dark:text-gray-300 mb-3'>Tags</h3>
                     <ul class='flex gap-1 flex-wrap'>
                         <li>
-                            <a href='#' class='inline-flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-medium  px-2.5 py-1.5 rounded-xl dark:bg-gray-700 dark:hover:bg-gray-800 dark:text-gray-300'>
+                            <a href='#'
+                                class='inline-flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-medium  px-2.5 py-1.5 rounded-xl dark:bg-gray-700 dark:hover:bg-gray-800 dark:text-gray-300'>
                                 Accessories
                             </a>
                         </li>
                         <li>
-                            <a href='#' class='inline-flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-medium  px-2.5 py-1.5 rounded-xl dark:bg-gray-700 dark:hover:bg-gray-800 dark:text-gray-300'>
+                            <a href='#'
+                                class='inline-flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-medium  px-2.5 py-1.5 rounded-xl dark:bg-gray-700 dark:hover:bg-gray-800 dark:text-gray-300'>
                                 Chairs
                             </a>
                         </li>
                         <li>
-                            <a href='#' class='inline-flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-medium  px-2.5 py-1.5 rounded-xl dark:bg-gray-700 dark:hover:bg-gray-800 dark:text-gray-300'>
+                            <a href='#'
+                                class='inline-flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-medium  px-2.5 py-1.5 rounded-xl dark:bg-gray-700 dark:hover:bg-gray-800 dark:text-gray-300'>
                                 Glass
                             </a>
                         </li>
                         <li>
-                            <a href='#' class='inline-flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-medium  px-2.5 py-1.5 rounded-xl dark:bg-gray-700 dark:hover:bg-gray-800 dark:text-gray-300'>
+                            <a href='#'
+                                class='inline-flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-medium  px-2.5 py-1.5 rounded-xl dark:bg-gray-700 dark:hover:bg-gray-800 dark:text-gray-300'>
                                 Deco
                             </a>
                         </li>
                         <li>
-                            <a href='#' class='inline-flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-medium  px-2.5 py-1.5 rounded-xl dark:bg-gray-700 dark:hover:bg-gray-800 dark:text-gray-300'>
+                            <a href='#'
+                                class='inline-flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-medium  px-2.5 py-1.5 rounded-xl dark:bg-gray-700 dark:hover:bg-gray-800 dark:text-gray-300'>
                                 Table
                             </a>
                         </li>
@@ -143,9 +160,12 @@
                     <ul class='flex'>
                         <li></li>
                         <li ng-repeat="(key, value) in tagParams">
-                            <div class='inline-flex cursor-default mr-1 items-center bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-medium  rounded-xl dark:bg-gray-700 dark:hover:bg-gray-800 dark:text-gray-300'>
+                            <div
+                                class='inline-flex cursor-default mr-1 items-center bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-medium  rounded-xl dark:bg-gray-700 dark:hover:bg-gray-800 dark:text-gray-300'>
                                 <div class="px-2.5 py-2">{{key}}: {{value}}</div>
-                                <ion-icon ng-click="deleteTag(key)" ng-if="value !== 'All' && value !== 0 && value !== 100 " class="pb-2 pr-2 pl-0 pt-[0.6rem] cursor-pointer" name="close-outline"></ion-icon>
+                                <ion-icon ng-click="deleteTag(key)"
+                                    ng-if="value !== 'All' && value !== 0 && value !== 100 "
+                                    class="pb-2 pr-2 pl-0 pt-[0.6rem] cursor-pointer" name="close-outline"></ion-icon>
                             </div>
                         </li>
                     </ul>
@@ -157,7 +177,8 @@
                             <b>
                                 {{searchParams.page === 0 ? 1 : searchParams.page * searchParams.pageSize}}
                                 -
-                                {{((searchParams.page + 1) * searchParams.pageSize) > totalItems ? totalItems : (searchParams.page + 1) * searchParams.pageSize }}
+                                {{((searchParams.page + 1) * searchParams.pageSize) > totalItems ? totalItems :
+                                (searchParams.page + 1) * searchParams.pageSize }}
                             </b>
                             of
                             <b>{{totalItems}}</b>
@@ -168,33 +189,45 @@
 
                     </div>
                     <div class="relative">
-                        <input ng-model='search' ng-model-options='{ debounce: 1000 }' type='text' id='table-search' class=' block p-2 px-4 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500' placeholder='Search for items'>
-                        <div ng-if="search" ng-click="deleteTag('Search')" class=' absolute cursor-pointer inset-y-0 right-0 flex items-center px-3 rounded-lg'>
+                        <input ng-model='search' ng-model-options='{ debounce: 1000 }' type='text' id='table-search'
+                            class=' block p-2 px-4 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500 dark:focus:border-sky-500'
+                            placeholder='Search for items'>
+                        <div ng-if="search" ng-click="deleteTag('Search')"
+                            class=' absolute cursor-pointer inset-y-0 right-0 flex items-center px-3 rounded-lg'>
                             <ion-icon class="dark:text-gray-200" name="close-outline"></ion-icon>
                         </div>
                     </div>
                 </div>
                 <div ng-if="products.length === 0" class=" mt-10">
-                    The product you are looking for does not exist. Return to <span class="cursor-pointer hover:underline ml-2 text-sky-500" ng-click="resetProduct()"> default page</span>
+                    The product you are looking for does not exist. Return to <span
+                        class="cursor-pointer hover:underline ml-2 text-sky-500" ng-click="resetProduct()"> default
+                        page</span>
                 </div>
 
-                <div ng-if="products.length > 0 " class='mx-auto max-w-screen-xl min-h-[636px]  grid grid-cols-1 min-[350px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4 lg:gap-y-6 gap-y-4'>
+                <div ng-if="products.length > 0 "
+                    class='mx-auto max-w-screen-xl min-h-[636px]  grid grid-cols-1 min-[350px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4 lg:gap-y-6 gap-y-4'>
                     <div ng-repeat='product in products'>
                         <div href='#' class='group relative pb-2'>
-                            <div id="productItem" class='group-hover:opacity-100 opacity-0 duration-700 px-5 absolute flex w-full h-full bg-opacity-50 bg-black rounded-lg items-center justify-center gap-2'>
-                                <div ng-click='addToCart(product)' class='cursor-pointer product-item text-white text-center flex items-center justify-center gap-1   duration-200 focus:ring-4 focus:ring-sky-300 font-medium rounded-lg hover:bg-sky-400  text-sm p-3  bg-sky-500   dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none dark:focus:ring-sky-800'>
+                            <div id="productItem"
+                                class='group-hover:opacity-100 opacity-0 duration-700 px-5 absolute flex w-full h-full bg-opacity-50 bg-black rounded-lg items-center justify-center gap-2'>
+                                <div ng-click='addToCart(product)'
+                                    class='cursor-pointer product-item text-white text-center flex items-center justify-center gap-1   duration-200 focus:ring-4 focus:ring-sky-300 font-medium rounded-lg hover:bg-sky-400  text-sm p-3  bg-sky-500   dark:bg-sky-600 dark:hover:bg-sky-700 focus:outline-none dark:focus:ring-sky-800'>
                                     <ion-icon class="text-white text-base" name="add-outline"></ion-icon>
                                 </div>
-                                <a href='#' class='text-white  text-center flex items-center justify-center gap-1 bg-gray-400 hover:bg-gray-300 duration-200 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg p-3 text-sm  dark:bg-gray-600 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-sky-800'>
+                                <a href='#'
+                                    class='text-white  text-center flex items-center justify-center gap-1 bg-gray-400 hover:bg-gray-300 duration-200 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg p-3 text-sm  dark:bg-gray-600 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-sky-800'>
                                     <ion-icon class="text-white text-base" name="apps-outline"></ion-icon>
                                 </a>
                             </div>
-                            <div class='aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7'>
-                                <img ng-src='http://localhost:8080/images/product/{{product.image}}' class=' w-full aspect-square object-cover object-center  duration-200'>
+                            <div
+                                class='aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7'>
+                                <img src="{{product.image}}"
+                                    class=' w-full aspect-square object-cover object-center  duration-200'>
                             </div>
                             <div class='text-center'>
                                 <h3 class='mt-4 text-sm text-gray-700 dark:text-gray-300'>{{product.name}}</h3>
-                                <p class='mt-1 text-lg font-medium text-gray-900 dark:text-gray-100'>$ <span class='mt-1 text-lg font-medium text-gray-900 dark:text-gray-100'>{{product.price}}</span>
+                                <p class='mt-1 text-lg font-medium text-gray-900 dark:text-gray-100'>$ <span
+                                        class='mt-1 text-lg font-medium text-gray-900 dark:text-gray-100'>{{product.price}}</span>
                                 </p>
                             </div>
                         </div>
@@ -205,18 +238,21 @@
                     <nav aria-label="Page navigation example">
                         <ul class="inline-flex items-center -space-x-px gap-3">
                             <li>
-                                <button ng-click="prevPage()" class="{{searchParams.page === 0 ? 'select-none cursor-default text-gray-200 bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400' : 'text-gray-500 bg-white dark:bg-gray-800 dark:text-gray-400 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700'}} px-3 py-2 ml-0 leading-tight rounded-lg border">
+                                <button ng-click="prevPage()"
+                                    class="{{searchParams.page === 0 ? 'select-none cursor-default text-gray-200 bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400' : 'text-gray-500 bg-white dark:bg-gray-800 dark:text-gray-400 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700'}} px-3 py-2 ml-0 leading-tight rounded-lg border">
                                     <ion-icon class="pt-1" name="chevron-back-outline"></ion-icon>
                                 </button>
                             </li>
                             <div ng-repeat="i in getTotalPage()">
                                 <li>
-                                    <button ng-click="changePage(i)" class=" {{i - 1 === searchParams.page ? 'select-none cursor-default text-sky-600 bg-sky-50 border-sky-400 dark:bg-gray-800 dark:border-sky-700 dark:text-sky-400' : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'}} rounded-lg px-3 py-2 leading-tight  border  ">{{i}}</button>
+                                    <button ng-click="changePage(i)"
+                                        class=" {{i - 1 === searchParams.page ? 'select-none cursor-default text-sky-600 bg-sky-50 border-sky-400 dark:bg-gray-800 dark:border-sky-700 dark:text-sky-400' : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'}} rounded-lg px-3 py-2 leading-tight  border  ">{{i}}</button>
                                 </li>
                             </div>
 
                             <li>
-                                <button ng-click="nextPage()" class="{{searchParams.page === totalPage -1 ? 'select-none cursor-default text-gray-200 bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400' : 'text-gray-500 bg-white dark:bg-gray-800 dark:text-gray-400 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700'}} px-3 py-2 ml-0 leading-tight rounded-lg border">
+                                <button ng-click="nextPage()"
+                                    class="{{searchParams.page === totalPage -1 ? 'select-none cursor-default text-gray-200 bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 dark:text-gray-400' : 'text-gray-500 bg-white dark:bg-gray-800 dark:text-gray-400 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700'}} px-3 py-2 ml-0 leading-tight rounded-lg border">
                                     <ion-icon class="pt-1" name="chevron-forward-outline"></ion-icon>
                                 </button>
                             </li>
