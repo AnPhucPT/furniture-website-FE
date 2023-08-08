@@ -3,17 +3,10 @@ function AuthService(app) {
         const login = async (formLogin) => {
             $rootScope.loading = true;
             try {
-                const res = await AuthApi.login(formLogin);
-                const { accessToken, accountDto } = res.data.data;
-
                 $timeout(function () {
                     $rootScope.loading = false;
                 }, 500);
-
-                return {
-                    accessToken,
-                    accountDto,
-                };
+                return AuthApi.login(formLogin)
             } catch (error) {
                 Promise.reject(error);
                 $rootScope.loading = false;
@@ -23,12 +16,10 @@ function AuthService(app) {
         const register = async (formRegister) => {
             $rootScope.loading = true;
             try {
-                const res = await AuthApi.register(formRegister);
-                console.log(res.data);
-
                 $timeout(function () {
                     $rootScope.loading = false;
                 }, 500);
+                return AuthApi.register(formRegister);
             } catch (error) {
                 Promise.reject(error);
                 $rootScope.loading = false;
