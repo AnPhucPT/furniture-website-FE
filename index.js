@@ -1,6 +1,7 @@
 import controller from './controllers/Controller.js';
 import service from './services/Service.js';
 import api from './api/Api.js';
+import { getApiUrl } from './utils/Utils.js';
 
 const app = angular.module('app', ['ngRoute']);
 
@@ -19,9 +20,13 @@ for (const key in controller) {
 app.run(function ($rootScope, $http) {
     $rootScope.darkModeColor = "dark:text-gray-200 dark:bg-gray-900"
     $rootScope.isAdmin = false
+    let user = JSON.parse(localStorage.getItem("user"))
+    if (user) {
+        $rootScope.isAdmin = user.role === 'ROLE_ADMIN'
+    }
     //before init
-    $http.get('').then((res) => {
-        $rootScope.categories = res.data;
+    $http.get(getApiUrl('/public/categories')).then((res) => {
+        $rootScope.categories = res.data.data;
     });
 
     $rootScope.initModal = (selector, options) => {
