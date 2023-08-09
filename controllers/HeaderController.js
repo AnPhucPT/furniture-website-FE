@@ -4,7 +4,7 @@ function HeaderController(app) {
         triggerType: 'click',
         offsetSkidding: 0,
         offsetDistance: 10,
-        delay: 300,
+        delay: 300
     };
     app.run(function ($rootScope) {
         $rootScope.initDropDown = (target, trigger, options) => {
@@ -13,7 +13,7 @@ function HeaderController(app) {
                 const $triggerEl = document.querySelector(trigger);
                 const dropDown = new Dropdown($targetEl, $triggerEl, {
                     ...defaultOptions,
-                    ...options,
+                    ...options
                 });
                 return dropDown;
             }
@@ -33,8 +33,11 @@ function HeaderController(app) {
             }
         };
 
-        $scope.isDarkTheme = false;
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        $scope.avatar = $scope.isDarkTheme = false;
+        if (
+            localStorage.getItem('color-theme') === 'dark' ||
+            (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
             $scope.isDarkTheme = true;
         } else {
             $scope.isDarkTheme = false;

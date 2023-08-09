@@ -8,9 +8,14 @@ function AuthApi(app) {
             register(formRegister) {
                 return $http.post(getApiUrl('/auth/register'), formRegister);
             },
-            registerWithAvatar(formRegister) {
-                return $http.post(getApiUrl('/auth/register'), formRegister);
-            },
+            registerWithAvatar(formData) {
+                return $http.post(getApiUrl('/auth/registerWithAvatar'), formData, {
+                    headers: {
+                        'Content-Type': undefined,
+                        Authorization: 'Bearer ' + localStorage.getItem('access_token')
+                    }
+                });
+            }
         };
     });
 }

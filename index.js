@@ -18,22 +18,22 @@ for (const key in controller) {
 }
 
 app.run(function ($rootScope, $http) {
-    $rootScope.darkModeColor = "dark:text-gray-200 dark:bg-gray-900"
-    $rootScope.isAdmin = false
-    let user = JSON.parse(localStorage.getItem("user"))
+    $rootScope.darkModeColor = 'dark:text-gray-200 dark:bg-gray-900';
+    $rootScope.isAdmin = false;
+    let user = JSON.parse(localStorage.getItem('user'));
     if (user) {
-        $rootScope.isAdmin = user.role === 'ROLE_ADMIN'
+        $rootScope.isAdmin = user.role === 'ROLE_ADMIN';
     }
     //before init
-    $http.get(getApiUrl('/public/categories')).then((res) => {
-        $rootScope.categories = res.data.data;
-    });
+    // $http.get(getApiUrl('/public/categories')).then((res) => {
+    //     $rootScope.categories = res.data.data;
+    // });
 
     $rootScope.initModal = (selector, options) => {
         const $targetEl = document.querySelector(selector);
         const modal = new Modal($targetEl, {
             ...defaultOptions,
-            ...options,
+            ...options
         });
         return modal;
     };
@@ -45,30 +45,30 @@ app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: '/pages/home.html',
-            controller: 'HomeController',
+            controller: 'HomeController'
         })
         .when('/shop', {
             templateUrl: '/pages/shop.html',
-            controller: 'ShopController',
+            controller: 'ShopController'
         })
         .when('/login', {
             templateUrl: '/pages/login.html',
-            controller: 'AuthController',
+            controller: 'AuthController'
         })
         .when('/cart', {
             templateUrl: '/pages/cart.html',
-            controller: 'CartController',
+            controller: 'CartController'
         })
         .when('/order', {
             templateUrl: '/pages/order.html',
-            controller: 'OrderController',
+            controller: 'OrderController'
         })
         .when('/product-manage', {
             templateUrl: '/pages/product-manage.html',
-            controller: 'ProductFormController',
+            controller: 'ProductFormController'
         })
         .otherwise({
-            templateUrl: 'views/notFound.html',
+            templateUrl: 'views/notFound.html'
         });
 });
 
@@ -76,7 +76,7 @@ const defaultOptions = {
     placement: 'bottom-right',
     backdrop: 'dynamic',
     backdropClasses: 'bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40',
-    closable: true,
+    closable: true
 };
 
 app.directive('customOnChange', function () {
@@ -88,7 +88,7 @@ app.directive('customOnChange', function () {
             element.on('$destroy', function () {
                 element.off();
             });
-        },
+        }
     };
 });
 export default app;
