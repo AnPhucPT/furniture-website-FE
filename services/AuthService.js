@@ -6,7 +6,7 @@ function AuthService(app) {
                 $timeout(function () {
                     $rootScope.loading = false;
                 }, 500);
-                return AuthApi.login(formLogin)
+                return AuthApi.login(formLogin);
             } catch (error) {
                 Promise.reject(error);
                 $rootScope.loading = false;
@@ -26,9 +26,23 @@ function AuthService(app) {
             }
         };
 
+        const registerWithAvatar = async (formData) => {
+            $rootScope.loading = true;
+            try {
+                $timeout(function () {
+                    $rootScope.loading = false;
+                }, 2000);
+                return AuthApi.registerWithAvatar(formData);
+            } catch (error) {
+                Promise.reject(error);
+                $rootScope.loading = false;
+            }
+        };
+
         return {
             login,
             register,
+            registerWithAvatar
         };
     });
 }
