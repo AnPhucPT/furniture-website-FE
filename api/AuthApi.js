@@ -11,8 +11,7 @@ function AuthApi(app) {
             registerWithAvatar(formData) {
                 return $http.post(getApiUrl('/auth/registerWithAvatar'), formData, {
                     headers: {
-                        'Content-Type': undefined,
-                        Authorization: 'Bearer ' + localStorage.getItem('access_token')
+                        'Content-Type': undefined
                     }
                 });
             }

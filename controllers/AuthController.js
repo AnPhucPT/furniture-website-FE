@@ -1,7 +1,7 @@
 import { convertToBlob } from '../utils/Utils.js';
 function AuthController(app) {
     app.controller('AuthController', function ($scope, $timeout, $rootScope, AuthService) {
-        $scope.activeTab = 2;
+        $scope.activeTab = 1;
         $scope.image =
             'https://media.istockphoto.com/id/1222357475/vector/image-preview-icon-picture-placeholder-for-website-or-ui-ux-design-vector-illustration.jpg?s=612x612&w=0&k=20&c=KuCo-dRBYV7nz2gbk4J9w1WtTAgpTdznHu55W9FjimE=';
         $scope.imageFile = null;
@@ -13,6 +13,10 @@ function AuthController(app) {
             email: '',
             password: '',
             confirmPassword: ''
+        };
+        $scope.errorMessageLogin = {
+            email: '',
+            password: ''
         };
         $scope.handleChangeFormLogin = () => {
             if ($scope.errorMessageLogin.email || $scope.errorMessageLogin.password) {
@@ -36,6 +40,7 @@ function AuthController(app) {
                 };
             }
         };
+
         $scope.formLogin = {
             email: '',
             password: ''
@@ -47,18 +52,30 @@ function AuthController(app) {
         };
 
         $scope.login = async () => {
-            const res = await AuthService.login($scope.formLogin);
-            console.log(res);
-            if (res?.data?.success) {
-                const { accessToken, accountDto } = res.data.data;
-                localStorage.setItem('access_token', accessToken);
-                localStorage.setItem('user', JSON.stringify(accountDto));
-                $rootScope.isAdmin = accountDto.role === 'ROLE_ADMIN';
-                $rootScope.$apply();
-                $rootScope.user = accountDto;
-                window.open('#!/', '_self');
+            if (!$scope.formLogin.email) {
+                $scope.errorMessageLogin.email = 'Email must not be empty ';
+            }
+
+            if (!$scope.formLogin.password) {
+                $scope.errorMessageLogin.password = 'Password must not be empty ';
             } else {
-                alert(res?.data?.message || 'Server interval');
+                const res = await AuthService.login($scope.formLogin);
+                console.log(res);
+                if (res?.data?.success) {
+                    const { accessToken, accountDto } = res.data.data;
+                    accountDto.avatar =
+                        accountDto.avatar == null
+                            ? 'https://media.istockphoto.com/id/1222357475/vector/image-preview-icon-picture-placeholder-for-website-or-ui-ux-design-vector-illustration.jpg?s=612x612&w=0&k=20&c=KuCo-dRBYV7nz2gbk4J9w1WtTAgpTdznHu55W9FjimE='
+                            : accountDto.avatar;
+                    localStorage.setItem('access_token', accessToken);
+                    localStorage.setItem('user', JSON.stringify(accountDto));
+                    $rootScope.isAdmin = accountDto.role === 'ROLE_ADMIN';
+                    $rootScope.$apply();
+                    $rootScope.user = accountDto;
+                    window.open('#!/', '_self');
+                } else {
+                    alert(res?.data?.message || 'Server interval');
+                }
             }
         };
 
@@ -87,7 +104,6 @@ function AuthController(app) {
             } else if ($scope.formRegister.password !== $scope.formRegister.confirmPassword) {
                 $scope.errorMessageRegister.confirmPassword = 'Confirm password does not match ';
             } else if (document.getElementById('avatar').files[0]) {
-                console.log('Have image ');
                 const formData = new FormData();
                 formData.append(
                     'account',
@@ -96,7 +112,6 @@ function AuthController(app) {
                 formData.append('file', document.getElementById('avatar').files[0]);
                 try {
                     const res = await AuthService.registerWithAvatar(formData);
-                    console.log(res);
                     if (res?.data?.success) {
                         $timeout(function () {
                             showSuccessToast('Your account have been Register Successful');
@@ -108,10 +123,8 @@ function AuthController(app) {
                     Promise.reject(error);
                 }
             } else {
-                console.log('Don not Have image ');
                 try {
                     const res = await AuthService.register($scope.formRegister);
-                    console.log(res);
                     if (res?.data?.success) {
                         $timeout(function () {
                             showSuccessToast('Your account have been Register Successful');
