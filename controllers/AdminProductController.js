@@ -1,7 +1,7 @@
 import { getApiUrl, convertToBlob } from '../utils/Utils.js';
 
-function ProductFormController(app) {
-    app.controller('ProductFormController', function ($scope, $http, $rootScope) {
+function AdminProductController(app) {
+    app.controller('AdminProductController', function ($scope, $http, $rootScope) {
         $scope.image =
             'https://media.istockphoto.com/id/1222357475/vector/image-preview-icon-picture-placeholder-for-website-or-ui-ux-design-vector-illustration.jpg?s=612x612&w=0&k=20&c=KuCo-dRBYV7nz2gbk4J9w1WtTAgpTdznHu55W9FjimE=';
         $scope.products = [];
@@ -142,4 +142,4 @@ function ProductFormController(app) {
         };
     });
 }
-export default ProductFormController;
+export default AdminProductController;
