@@ -13,7 +13,6 @@ function CategoryApi(app) {
             createCategory(category) {
                 return $http.post(getApiUrl('/admin/categories'), category, {
                     headers: {
-                        'Content-Type': undefined,
                         Authorization: 'Bearer ' + localStorage.getItem('access_token')
                     }
                 });
@@ -21,7 +20,6 @@ function CategoryApi(app) {
             updateCategory(category) {
                 return $http.put(getApiUrl('/admin/categories'), category, {
                     headers: {
-                        'Content-Type': undefined,
                         Authorization: 'Bearer ' + localStorage.getItem('access_token')
                     }
                 });
@@ -29,7 +27,6 @@ function CategoryApi(app) {
             deleteCategory(id) {
                 return $http.delete(getApiUrl('/admin/categories/' + id), {
                     headers: {
-                        'Content-Type': undefined,
                         Authorization: 'Bearer ' + localStorage.getItem('access_token')
                     }
                 });

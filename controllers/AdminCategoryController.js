@@ -2,7 +2,7 @@ function AdminCategoryController(app) {
     app.controller('AdminCategoryController', function ($scope, $timeout, $rootScope, CategoryService) {
         $scope.categories = [];
         $scope.current = null;
-        $scope.params = { page: 0, pageSize: 3, sortFiled: 'id', orderBy: 'desc' };
+        $scope.params = { page: 0, pageSize: 5, sortFiled: 'id', orderBy: 'desc' };
 
         $scope.$watch('params', function () {
             $scope.getData();
@@ -83,11 +83,12 @@ function AdminCategoryController(app) {
             $scope.modal.hide();
             try {
                 const res = await CategoryService.deleteCategory($scope.current.id);
-                console.log(res);
                 if (res?.data?.success) {
                     $scope.getData();
                     $timeout(function () {
-                        showSuccessToast(res?.data?.message || 'Delete Action have been done !');
+                        showSuccessToast(`Delete Category 
+                        <span class="dark:text-red-300 text-red-500">${$scope.current.name}</span>
+                        Successful`);
                     }, 700);
                 } else {
                     alert(res?.data?.message || 'Server interval');
@@ -97,39 +98,69 @@ function AdminCategoryController(app) {
             }
         };
 
-        $scope.category = {
+        $scope.modalCategory = $rootScope.initModal('#category-modal');
+
+        $scope.showModalCategory = () => {
+            $scope.modalCategory.show();
+        };
+
+        $scope.hideModalCategory = () => {
+            $scope.modalCategory.hide();
+        };
+
+        $scope.showModalForEdit = (category) => {
+            $scope.current = category;
+            $scope.categoryForm = { name: category.name };
+            $scope.showModalCategory();
+        };
+
+        $scope.showModalForCreate = () => {
+            $scope.current = null;
+            $scope.categoryForm = { name: '' };
+            $scope.showModalCategory();
+        };
+
+        $scope.categoryForm = {
             name: ''
         };
-        $scope.reset = () => {
-            $scope.category = {
-                name: ''
-            };
-        };
 
-        $scope.submitProduct = function () {
+        $scope.submit = async () => {
             if ($scope.current) {
-                // formData.append('product', convertToBlob({ ...$scope.product, id: $scope.current.id }));
-                // $scope.getData();
-                // $scope.reset();
+                const res = await CategoryService.updateCategory({
+                    id: $scope.current.id,
+                    name: $scope.categoryForm.name
+                });
+                if (res?.data?.success) {
+                    $scope.getData();
+                    $timeout(function () {
+                        showSuccessToast(
+                            `Update Category 
+                            <span class="dark:text-blue-300 text-blue-500">${$scope.current.name}</span>
+                            to Category 
+                            <span class="dark:text-green-300 text-green-500">${$scope.categoryForm.name}</span>
+                            Successful`
+                        );
+                    }, 700);
+                } else {
+                    alert(res?.data?.message || 'Server interval');
+                }
+                $scope.getData();
             } else {
-                // formData.append('product', convertToBlob($scope.product));
-                // $scope.getData();
-                // $scope.reset();
+                const res = await CategoryService.createCategory({ name: $scope.categoryForm.name });
+                if (res?.data?.success) {
+                    $scope.getData();
+                    $timeout(function () {
+                        showSuccessToast(`Create Category 
+                        <span class="dark:text-green-300 text-green-500">${$scope.categoryForm.name}</span>
+                        Successful`);
+                    }, 700);
+                } else {
+                    alert(res?.data?.message || 'Server interval');
+                }
+                $scope.getData();
             }
+            $scope.hideModalCategory();
         };
-
-        $scope.edit = (category) => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth' // This triggers the smooth scrolling
-            });
-            $scope.current = category;
-            $scope.category = {
-                ...category
-            };
-        };
-
-        $scope.delete = (category) => {};
     });
 }
 
