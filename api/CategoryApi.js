@@ -7,6 +7,9 @@ function CategoryApi(app) {
                     params
                 });
             },
+            getAll() {
+                return $http.get(getApiUrl('/public/categories'));
+            },
             getExistCategory() {
                 return $http.get(getApiUrl('/public/categories-exist'));
             },

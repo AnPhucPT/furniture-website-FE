@@ -64,7 +64,7 @@ app.config(function ($routeProvider) {
             controller: 'OrderController'
         })
         .when('/product-manage', {
-            templateUrl: '/pages/manage-product.html',
+            templateUrl: '/pages/manage-product2.html',
             controller: 'AdminProductController'
         })
         .when('/category-manage', {

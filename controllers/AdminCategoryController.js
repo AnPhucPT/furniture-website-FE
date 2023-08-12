@@ -144,7 +144,6 @@ function AdminCategoryController(app) {
                 } else {
                     alert(res?.data?.message || 'Server interval');
                 }
-                $scope.getData();
             } else {
                 const res = await CategoryService.createCategory({ name: $scope.categoryForm.name });
                 if (res?.data?.success) {
@@ -157,8 +156,8 @@ function AdminCategoryController(app) {
                 } else {
                     alert(res?.data?.message || 'Server interval');
                 }
-                $scope.getData();
             }
+            $scope.getData();
             $scope.hideModalCategory();
         };
     });
