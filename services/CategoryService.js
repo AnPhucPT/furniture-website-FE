@@ -17,6 +17,10 @@ function CategoryService(app) {
                 return CategoryApi.getExistCategory();
             },
 
+            async getAll() {
+                return CategoryApi.getAll();
+            },
+
             async createCategory(category) {
                 $rootScope.loading = true;
                 $timeout(function () {
