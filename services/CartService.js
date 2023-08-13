@@ -22,14 +22,17 @@ function CartService(app) {
                 $rootScope.loading = false;
             }, 500);
             $timeout(function () {
-                showSuccessToast();
+                showSuccessToast(`Add Product 
+                <span class="dark:text-red-300 text-green-500">${product.name}</span>
+                to <a class="underline text-blue-600 dark:text-blue-400" href="#!cart">Cart</a>
+                Successful`);
             }, 700);
         };
 
         return {
             getCartFromLS,
             setCartToLS,
-            addToCart,
+            addToCart
         };
     });
 }
