@@ -10,6 +10,9 @@ function CategoryApi(app) {
             getAll() {
                 return $http.get(getApiUrl('/public/categories'));
             },
+            getCategoryProductCount() {
+                return $http.get(getApiUrl('/public/categories/product-count'));
+            },
             getExistCategory() {
                 return $http.get(getApiUrl('/public/categories-exist'));
             },

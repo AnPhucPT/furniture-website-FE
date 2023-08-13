@@ -2,7 +2,7 @@ function AdminCategoryController(app) {
     app.controller('AdminCategoryController', function ($scope, $timeout, $rootScope, CategoryService) {
         $scope.categories = [];
         $scope.current = null;
-        $scope.params = { page: 0, pageSize: 5, sortFiled: 'id', orderBy: 'desc' };
+        $scope.params = { page: 0, pageSize: 5, sortField: 'id', orderBy: 'desc' };
 
         $scope.$watch('params', function () {
             $scope.getData();

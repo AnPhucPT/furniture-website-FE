@@ -10,15 +10,15 @@ function CategoryService(app) {
             },
 
             async getExistCategory() {
-                $rootScope.loading = true;
-                $timeout(function () {
-                    $rootScope.loading = false;
-                }, 500);
                 return CategoryApi.getExistCategory();
             },
 
             async getAll() {
                 return CategoryApi.getAll();
+            },
+
+            async getCategoryProductCount() {
+                return CategoryApi.getCategoryProductCount();
             },
 
             async createCategory(category) {

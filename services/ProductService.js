@@ -34,6 +34,10 @@ function ProductService(app) {
                     $rootScope.loading = false;
                 }, 500);
                 return ProductApi.deleteProduct(product.id);
+            },
+
+            async getMax() {
+                return ProductApi.getMax();
             }
         };
     });

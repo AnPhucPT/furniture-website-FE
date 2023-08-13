@@ -7,9 +7,11 @@ function ProductApi(app) {
                     params
                 });
             },
-            minMax() {
-                return $http.get(getApiUrl('/public/product/min-max'));
+
+            getMax() {
+                return $http.get(getApiUrl('/public/products/max-price'));
             },
+
             createProduct(formData) {
                 return $http.post(getApiUrl('/admin/products'), formData, {
                     headers: {
