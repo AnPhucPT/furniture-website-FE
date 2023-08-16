@@ -64,8 +64,12 @@ app.config(function ($routeProvider) {
             controller: 'OrderController'
         })
         .when('/product-manage', {
-            templateUrl: '/pages/product-manage.html',
-            controller: 'ProductFormController'
+            templateUrl: '/pages/manage-product2.html',
+            controller: 'AdminProductController'
+        })
+        .when('/category-manage', {
+            templateUrl: '/pages/manage-category.html',
+            controller: 'AdminCategoryController'
         })
         .otherwise({
             templateUrl: 'views/notFound.html'
