@@ -1,5 +1,5 @@
 export function getApiUrl(endPoint) {
-    return `http://localhost:8080/api${endPoint}`;
+    return `https://api.anphuc.me/api${endPoint}`;
 }
 export function convertToBlob(obj) {
     const json = JSON.stringify(obj);
