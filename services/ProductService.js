@@ -1,12 +1,8 @@
 import { convertToBlob } from '../utils/Utils.js';
 function ProductService(app) {
-    app.factory('ProductService', function ($rootScope, $timeout, ProductApi) {
+    app.factory('ProductService', function (ProductApi) {
         return {
             async filter(params) {
-                $rootScope.loading = true;
-                $timeout(function () {
-                    $rootScope.loading = false;
-                }, 500);
                 return ProductApi.filter(params);
             },
 
@@ -29,10 +25,6 @@ function ProductService(app) {
             },
 
             async deleteProduct(product) {
-                $rootScope.loading = true;
-                $timeout(function () {
-                    $rootScope.loading = false;
-                }, 500);
                 return ProductApi.deleteProduct(product.id);
             },
 

@@ -16,6 +16,7 @@ function ShopController(app) {
         });
 
         $scope.getData = async () => {
+            $rootScope.loading = true;
             try {
                 const res = await ProductService.filter($scope.searchParams);
                 const { totalPage, totalItems, datas } = res.data.data;
@@ -28,6 +29,7 @@ function ShopController(app) {
                 $scope.getTotalPage = () => {
                     return Array.from({ length: $scope.totalPage }, (_, index) => index + 1);
                 };
+                $rootScope.loading = false;
             }
         };
 
